@@ -11,7 +11,7 @@ function Nav(props) {
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="#navbarsExample07"
+          data-toggle="collapse"
           data-target="#navbarsExample07"
           aria-controls="#navbarsExample07"
           aria-label="Toggle Navigation"
