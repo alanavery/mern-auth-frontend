@@ -11,23 +11,73 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
 
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      if (password === confirmPassword) {
+        const newUser = { name, email, password };
+        let response = await axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser);
+        console.log(response);
+        setRedirect(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (redirect) return <Redirect to="/login" />;
+
   return (
     <div className="row mt-4">
       <div className="col-md-7 offset-md-3">
         <div className="card card-body">
           <h2 className="py-2">Sign Up</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
-              <input className="form-control" type="text" name="name" value={name} onChange={} />
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input className="form-control" type="email" name="email" value={email} onChange={} />
+              <input
+                className="form-control"
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input className="form-control" type="password" name="password" value={password} onChange={} />
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password</label>
@@ -36,7 +86,7 @@ function Signup() {
                 type="password"
                 name="confirmPassword"
                 value={confirmPassword}
-                onChange={}
+                onChange={handleConfirmPassword}
               />
             </div>
           </form>
