@@ -32,8 +32,7 @@ function Signup() {
       e.preventDefault();
       if (password === confirmPassword) {
         const newUser = { name, email, password };
-        let response = await axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser);
-        console.log(response);
+        await axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser);
         setRedirect(true);
       }
     } catch (err) {

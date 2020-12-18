@@ -1,4 +1,4 @@
-import React, { Components, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
@@ -41,7 +41,6 @@ function App() {
   }, []);
 
   const nowCurrentUser = (userData) => {
-    console.log('nowCurrentUser is here.');
     setCurrentUser(userData);
     setIsAuthenticated(true);
   };
