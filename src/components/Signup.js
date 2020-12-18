@@ -89,6 +89,8 @@ function Signup() {
                 onChange={handleConfirmPassword}
               />
             </div>
+            <input className="btn btn-primary float-right" type="submit" value="Submit" />
+            {/* <button className="btn btn-primary float-right" type="submit">Submit</button> */}
           </form>
         </div>
       </div>
