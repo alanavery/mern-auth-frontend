@@ -21,6 +21,13 @@ function Login(props) {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      const userData = { email, password };
+      let response = await axios.post(`${REACT_APP_SERVER_URL}/users/login`, userData);
+      const { token } = response.data;
+      localStorage.setItem('jwtToken', token);
+      setAuthToken(token);
+      const decoded = jwtDecode(token);
+      props.nowCurrentUser(decoded);
     } catch (err) {
       console.log(err);
     }
