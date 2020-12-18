@@ -70,4 +70,4 @@ function Login(props) {
   );
 }
 
-export default Signup;
+export default Login;
